@@ -85,15 +85,13 @@ public class MagicSquare {
             colSum += square[0][col];
         }
 
-        //Calculate the sum of diagonal...
+        //Calculate the sum of a diagonal...
         int diagonalSum = 0;
         int x1 = 0;
         int y1 = 0;
         while (x1 < square.length){
-            while (y1 < square.length){
-                diagonalSum += square[x1][y1];
-                y1++;
-            }
+            diagonalSum += square[x1][y1];
+            y1++;
             x1++;
         }
 
