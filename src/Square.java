@@ -1,17 +1,17 @@
 public class Square {
 
-    //Constructor to construct a class and initiate the fields...
-    Square(int n, int [][] square, int rotation){
-        this.n = n;
-        this.square = square;
-        this.rotation = rotation;
-    }
-
     //Declare class fields...
-    int n;
-    int [][] square;
+    int length;
+    int [][] numbers;
     int rotation;
     int sum;
+    
+    //Constructor to construct a class and initiate the fields...
+    Square(int length, int [][] numbers, int rotation){
+        this.length = length;
+        this.numbers = numbers;
+        this.rotation = rotation;
+    }
 
     //This method generates a magic square of n x n and rotation it in 0=0°, 1=90°, 2=180°, 3=270°...
     void generateSquare(int n) {
@@ -20,9 +20,9 @@ public class Square {
         int count = n * n;
         int i = ((n) / 2);
         int j = 0;
-        square[i][j] = next++;
+        numbers[i][j] = next++;
 
-        //This loop fills up the square with numbers that are less than a squared n ...
+        //This loop fills up the square with numbers that are less than a square n ...
         while (next <= count) {
             i++;
             j--;
@@ -31,8 +31,8 @@ public class Square {
                 i--;
                 j += 2;
 
-                if (square[i][j] == 0) {
-                    square[i][j] = next++;
+                if (numbers[i][j] == 0) {
+                    numbers[i][j] = next++;
                 }
                 else {
                     i--;
@@ -42,8 +42,8 @@ public class Square {
             else if (j < 0) {
                 j = n - 1;
 
-                if (square[i][j] == 0) {
-                    square[i][j] = next++;
+                if (numbers[i][j] == 0) {
+                    numbers[i][j] = next++;
                 }
                 else {
                     i--;
@@ -53,8 +53,8 @@ public class Square {
             else if (i >= n) {
                 i = 0;
 
-                if (square[i][j] == 0) {
-                    square[i][j] = next++;
+                if (numbers[i][j] == 0) {
+                    numbers[i][j] = next++;
                 }
                 else {
                     i--;
@@ -63,12 +63,12 @@ public class Square {
             }
             else {
 
-                if (square[i][j] != 0) {
+                if (numbers[i][j] != 0) {
                     i -= 2;
                     j += 3;
                 }
                 else {
-                    square[i][j] = next++;
+                    numbers[i][j] = next++;
                 }
             }
         }
@@ -76,21 +76,21 @@ public class Square {
         //Calculate the sum of a row...
         int rowSum = 0;
         for(int row = 0; row < n; row++){
-            rowSum += square[row][0];
+            rowSum += numbers[row][0];
         }
 
         //Calculate the sum of a column...
         int colSum = 0;
         for(int col = 0; col < n; col++){
-            colSum += square[0][col];
+            colSum += numbers[0][col];
         }
 
         //Calculate the sum of a diagonal...
         int diagonalSum = 0;
         int x1 = 0;
         int y1 = 0;
-        while (x1 < square.length){
-            diagonalSum += square[x1][y1];
+        while (x1 < numbers.length){
+            diagonalSum += numbers[x1][y1];
             y1++;
             x1++;
         }
@@ -153,13 +153,13 @@ public class Square {
     void printSquare(int x, int y){
 
         //These statements just aligns numbers perfectly in a grid...
-        if (square[x][y] < 10){
+        if (numbers[x][y] < 10){
             System.out.print(" ");
         }
-        if (square[x][y] < 100){
+        if (numbers[x][y] < 100){
             System.out.print(" ");
         }
         //Print magic square.
-        System.out.print(square[x][y] + " ");
+        System.out.print(numbers[x][y] + " ");
     }
 }
