@@ -13,12 +13,12 @@ public class Square {
         this.rotation = rotation;
     }
 
-    //This method generates a magic square of n x n and rotation it in 0=0°, 1=90°, 2=180°, 3=270°...
-    void generateSquare(int n) {
+    //This method generates a magic square of length x length and rotate it in 0=0°, 1=90°, 2=180°, 3=270°...
+    void generateSquare() {
 
         int next = 1;
-        int count = n * n;
-        int i = ((n) / 2);
+        int count = length * length;
+        int i = ((length) / 2);
         int j = 0;
         numbers[i][j] = next++;
 
@@ -27,7 +27,7 @@ public class Square {
             i++;
             j--;
 
-            if (j < 0 && i >= n) {
+            if (j < 0 && i >= length) {
                 i--;
                 j += 2;
 
@@ -40,7 +40,7 @@ public class Square {
                 }
             }
             else if (j < 0) {
-                j = n - 1;
+                j = length - 1;
 
                 if (numbers[i][j] == 0) {
                     numbers[i][j] = next++;
@@ -50,7 +50,7 @@ public class Square {
                     j += 2;
                 }
             }
-            else if (i >= n) {
+            else if (i >= length) {
                 i = 0;
 
                 if (numbers[i][j] == 0) {
@@ -75,13 +75,13 @@ public class Square {
 
         //Calculate the sum of a row...
         int rowSum = 0;
-        for(int row = 0; row < n; row++){
+        for(int row = 0; row < length; row++){
             rowSum += numbers[row][0];
         }
 
         //Calculate the sum of a column...
         int colSum = 0;
-        for(int col = 0; col < n; col++){
+        for(int col = 0; col < length; col++){
             colSum += numbers[0][col];
         }
 
@@ -101,21 +101,21 @@ public class Square {
 
         //These statements produce the magic square or rotations an original square...
         if (rotation == 0){
-            for(int x = 0; x < n; x++) {
-                for (int y = n-1; y >= 0; y--) {
+            for(int x = 0; x < length; x++) {
+                for (int y = length-1; y >= 0; y--) {
                     printSquare(y,x); //prints out a magic square...
                 }
                 System.out.println();
             }
         }
         else if (rotation == 1){
-            rotationSquare90(n);
+            rotationSquare90(length);
         }
         else if (rotation == 2){
-            rotationSquare180(n);
+            rotationSquare180(length);
         }
         else if (rotation == 3){
-            rotationSquare270(n);
+            rotationSquare270(length);
         }
     }
 
