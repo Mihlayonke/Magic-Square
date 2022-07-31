@@ -1,9 +1,9 @@
 public class Square {
 
     //Declare class fields...
-    int length;
-    int [][] numbers;
-    int rotation;
+    private int length;
+    private int [][] numbers;
+    private int rotation;
     int sum;
     
     //Constructor to construct a class and initiate the fields...
