@@ -23,8 +23,9 @@ public class Main {
             System.out.println("___ "+ length +" x "+ length +" Magic Square ___");
             System.out.println();
 
-            //Generate a magic square than is (n x n) and rotate in degrees...
-            square.generateSquare(length);
+            //Generate a magic square and rotate a square...
+            square.generateSquare();
+            
             System.out.println();
             System.out.println("The sum of each row, column and diagonal is "+square.sum);
             System.out.println("___ END ___");
