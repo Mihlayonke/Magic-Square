@@ -8,12 +8,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter an odd number for a length: ");
         int length = scanner.nextInt();
-        
-        //Rotate a square clockwise by (0x0°, 1x90°, 2x90°, 3x90°)...
-        System.out.print("Enter rotation of a square, (0=0°, 1=90°, 2=180°, 3=270°): ");
+
+        //Rotate a square clockwise by (1x0°, 2x90°, 3x90°, 4x90°)...
+        System.out.print("Enter rotation of a square, (1=0°, 2=90°, 3=180°, 4=270°): ");
         int rotation = scanner.nextInt();
 
-        if ((length % 2 != 0) && (rotation >= 0 && rotation <= 3)){
+        if ((length % 2 != 0) && (rotation >= 1 && rotation <=4 )){
             //Square with length x length dimension of numbers...
             int [][] numbers = new int [length][length];
 
@@ -25,7 +25,7 @@ public class Main {
 
             //Generate a magic square and rotate a square...
             square.generateSquare();
-            
+
             System.out.println();
             System.out.println("The sum of each row, column and diagonal is "+square.sum);
             System.out.println("___ END ___");
