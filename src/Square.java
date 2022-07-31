@@ -22,7 +22,7 @@ public class Square {
         int j = 0;
         numbers[i][j] = next++;
 
-        //This loop fills up the square with numbers that are square length-1 ...
+        //This loop fills up the square with numbers that are square (length**2)-1 ...
         while (next <= count) {
             i++;
             j--;
