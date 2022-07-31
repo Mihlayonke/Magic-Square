@@ -13,7 +13,7 @@ public class Square {
         this.rotation = rotation;
     }
 
-    //This method generates a magic square of length x length and rotate it in 0=0°, 1=90°, 2=180°, 3=270°...
+    //This method generates a magic square of length x length and rotate it in 1=0°, 2=90°, 3=180°, 4=270°...
     void generateSquare() {
 
         int next = 1;
@@ -22,7 +22,7 @@ public class Square {
         int j = 0;
         numbers[i][j] = next++;
 
-        //This loop fills up the square with numbers that are less than a square n ...
+        //This loop fills up the square with numbers that are square length-1 ...
         while (next <= count) {
             i++;
             j--;
@@ -99,50 +99,55 @@ public class Square {
             sum = diagonalSum;
         }
 
-        //These statements produce the magic square or rotations an original square...
-        if (rotation == 0){
-            for(int x = 0; x < length; x++) {
-                for (int y = length-1; y >= 0; y--) {
-                    printSquare(y,x); //prints out a magic square...
-                }
-                System.out.println();
-            }
-        }
-        else if (rotation == 1){
-            rotationSquare90(length);
+        //These statements produce the magic square and rotates an original square...
+        if (rotation == 1){
+            rotationSquare1(length);
         }
         else if (rotation == 2){
-            rotationSquare180(length);
+            rotationSquare2(length);
         }
         else if (rotation == 3){
-            rotationSquare270(length);
+            rotationSquare3(length);
+        }
+        else if (rotation == 4){
+            rotationSquare4(length);
         }
     }
 
-    //This method rotations the original square in 1x90°...
-    void rotationSquare90(int n) {
-        for (int x = n-1; x >= 0; x--) {
-            for (int y = n-1; y >= 0; y--) {
-                printSquare(x,y); //prints out a magic square...
-            }
-            System.out.println();
-        }
-    }
-
-    //This method rotations the original square in 2x90°...
-    void rotationSquare180(int n) {
-        for (int x = n-1; x >= 0; x--) {
-            for (int y = 0; y < n; y++) {
+    //This method rotations the original square in 0°...
+    private void rotationSquare1(int length){
+        for(int x = 0; x < length; x++) {
+            for (int y = length-1; y >= 0; y--) {
                 printSquare(y,x); //prints out a magic square...
             }
             System.out.println();
         }
     }
 
-    //This method rotations the original square in 3x90°...
-    void rotationSquare270(int n) {
-        for (int x = 0; x < n; x++) {
-            for (int y = 0; y < n; y++) {
+    //This method rotations the original square in 90°...
+    private void rotationSquare2(int length) {
+        for (int x = length-1; x >= 0; x--) {
+            for (int y = length-1; y >= 0; y--) {
+                printSquare(x,y); //prints out a magic square...
+            }
+            System.out.println();
+        }
+    }
+
+    //This method rotations the original square in 180°...
+    private void rotationSquare3(int length) {
+        for (int x = length-1; x >= 0; x--) {
+            for (int y = 0; y < length; y++) {
+                printSquare(y,x); //prints out a magic square...
+            }
+            System.out.println();
+        }
+    }
+
+    //This method rotations the original square in 270°...
+    private void rotationSquare4(int length) {
+        for (int x = 0; x < length; x++) {
+            for (int y = 0; y < length; y++) {
                 printSquare(x,y); //prints out a magic square...
             }
             System.out.println();
@@ -150,7 +155,7 @@ public class Square {
     }
 
     //This method prints out a magic square...
-    void printSquare(int x, int y){
+    private void printSquare(int x, int y){
 
         //These statements just aligns numbers perfectly in a grid...
         if (numbers[x][y] < 10){
